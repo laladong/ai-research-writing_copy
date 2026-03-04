@@ -1,27 +1,3 @@
-> Make AI Writing Better for Everyone
-
-## 📖 为什么做这个项目
-
-当你第三次调试同一个润色 prompt 时，隔壁组的同学可能已经用现成的模板改完了三篇论文。
-
-在学术圈，prompt 工程正在成为一种"隐性资源"——顶尖研究组有完善的模板库，而大多数人还在从零摸索。更进一步，agent skills 作为新兴技术能更强大地助力论文写作，但由于存在一定使用门槛，大部分人还不知道如何上手。我们不想看到这种不平等继续。
-
-## 🎯 我们做了什么
-
-我们调研了 [**MSRA**](https://www.microsoft.com/en-us/research/lab/microsoft-research-asia-zh-cn/)、[**Seed**](https://seed.bytedance.com/zh/)、[**SH AI Lab**](https://www.shlab.org.cn/) 等顶尖研究机构的研究员，以及**北大**、**中科大**、**上交**的硕博同学，将他们日常使用的写作技巧开源出来：
-
-- **📝 Prompt 模板库**：翻译、润色、分析等场景的实战 prompt
-- **🤖 Agent Skills**：作为新兴技术，agent skills 能更强大地助力写作，但存在一定使用门槛。我们提供接地气的使用教程，并抽取了写作相关的核心 skills，让你快速上手
-
-## ✨ 特点
-- 🔬 **实战打磨**：来自一线科研人员的真实使用场景
-- 🚀 **开箱即用**：复制即用，无需重复造轮子
-- 🤝 **持续更新**：不断收集新技巧和最佳实践
-
-**不要在 prompt 调试上浪费时间，把精力留给真正的科研。**
-
----
-
 ## 📑 目录 (Table of Contents)
 
 ### Part I: 写作 Prompt 集合
@@ -42,16 +18,9 @@
 - [论文整体以 Reviewer 视角进行审视](#论文整体以-reviewer-视角进行审视)
 - [模型选择](#模型选择)
 
-### Part II: 论文写作相关的 Skills
-- [Skills 的配置](#skills-的配置)
-- [Skills 总览](#skills-总览)
-- [使用场景与示例 Prompt](#使用场景与示例-prompt)
-
 ---
 
 # Part I: 写作 Prompt 集合
-
-> 💡 **使用说明**：以下 Prompt 可直接复制到聊天框中与大模型交互使用。每个 Prompt 都经过精心设计，请完整复制使用以获得最佳效果。
 
 ## 中转英
 
@@ -103,7 +72,7 @@
 你是一位资深的计算机科学领域的学术翻译官。你的任务是帮助科研人员快速理解复杂的英文论文段落。
 
 # Task
-请将我提供的【英文 LaTeX 代码片段】翻译为流畅、易读的【中文文本】。
+请将我提供的英文片段翻译为流畅、易读的【中文文本】。
 
 # Constraints
 1. 语法清洗：
@@ -175,7 +144,7 @@
 你是一位专注于简洁性的顶级学术编辑。你的特长是在不损失任何信息量的前提下，通过句法优化来压缩文本长度。
 
 # Task
-请将我提供的【英文 LaTeX 代码片段】进行微幅缩减。
+请将我提供的中文片段进行微幅缩减。
 
 # Constraints
 1. 调整幅度：
@@ -184,21 +153,18 @@
 
 2. 缩减手段：
    - 句法压缩：将从句转化为短语，或者将被动语态转化为主动语态（如果能更简练的话）。
-   - 剔除冗余：删除无意义的填充词，例如将 "in order to" 简化为 "to"。
+   - 剔除冗余：删除无意义的填充词。
 
 3. 视觉与风格：
-   - 保持 LaTeX 源码纯净，不要使用加粗、斜体或引号。
+   - 保持纯净，不要使用加粗、斜体或引号。
    - 尽量不要使用破折号（—）。
    - 拒绝列表格式（Itemization），保持连贯段落。
 
 4. 输出格式：
-   - Part 1 [LaTeX]：只输出缩减后的英文 LaTeX 代码本身。
-     * 语言要求：必须是全英文。
-     * 必须对特殊字符进行转义（如 `%`、`_`、`&`）。
+   - Part 1：只输出缩减后的文字本身。
      * 保持数学公式原样（保留 `$` 符号）。
-   - Part 2 [Translation]：对应的中文直译（用于核对核心信息是否完整保留）。
-   - Part 3 [Modification Log]：使用中文简要说明你调整了哪些地方（例如：删除了冗余词 "XXX"，合并了 "YYY" 从句）。
-   - 除以上三部分外，不要输出任何多余的对话。
+   - Part 2 [Modification Log]：使用中文简要说明你调整了哪些地方（例如：删除了冗余词 "XXX"，合并了 "YYY" 从句）。
+   - 除以上2部分外，不要输出任何多余的对话。
 
 # Execution Protocol
 在输出前，请自查：
@@ -218,7 +184,7 @@
 你是一位专注于逻辑流畅度的顶级学术编辑。你的特长是通过深挖内容深度和增强逻辑连接，使文本更加饱满、充分。
 
 # Task
-请将我提供的【英文 LaTeX 代码片段】进行微幅扩写。
+请将我提供的中文片段进行微幅扩写。
 
 # Constraints
 1. 调整幅度：
@@ -227,22 +193,20 @@
 
 2. 扩写手段：
    - 深度挖掘：仔细阅读原文，尝试挖掘并显式化原文中隐含的结论、前提或因果关系。将原本留白的部分补充完整。
-   - 逻辑增强：增加必要的连接词（如 Furthermore, Notably）以明确句间关系。
+   - 逻辑增强：增加必要的连接词以明确句间关系。
    - 表达升级：将简单的描述替换为更精准、更具描述性的学术表达。
 
 3. 视觉与风格：
-   - 保持 LaTeX 源码纯净，不要使用加粗、斜体或引号。
+   - 保持纯净，不要使用加粗、斜体或引号。
    - 尽量不要使用破折号（—）。
    - 拒绝列表格式（Itemization），保持连贯段落。
 
 4. 输出格式：
-   - Part 1 [LaTeX]：只输出扩写后的英文 LaTeX 代码本身。
-     * 语言要求：必须是全英文。
+   - Part 1 ：只输出扩写后的文字本身。
      * 必须对特殊字符进行转义（如 `%`、`_`、`&`）。
      * 保持数学公式原样（保留 `$` 符号）。
-   - Part 2 [Translation]：对应的中文直译（用于核对新增的逻辑是否符合原意）。
-   - Part 3 [Modification Log]：使用中文简要说明你调整了哪些地方（例如：补充了隐含结论 "XXX"，增加了连接词 "YYY"）。
-   - 除以上三部分外，不要输出任何多余的对话。
+   - Part 2 [Modification Log]：使用中文简要说明你调整了哪些地方（例如：补充了隐含结论 "XXX"，增加了连接词 "YYY"）。
+   - 除以上2部分外，不要输出任何多余的对话。
 
 # Execution Protocol
 在输出前，请自查：
@@ -352,7 +316,7 @@
 你是一位负责论文终稿校对的学术助手。你的任务是进行“红线审查”，确保论文没有致命错误。
 
 # Task
-请对我提供的【英文 LaTeX 代码片段】进行最后的一致性与逻辑核对。
+请对我提供的文字片段进行最后的一致性与逻辑核对。
 
 # Constraints
 1. 审查阈值（高容忍度）：
@@ -363,7 +327,7 @@
 2. 审查维度：
    - 致命逻辑：是否存在前后完全矛盾的陈述？
    - 术语一致性：核心概念是否在没有说明的情况下换了名字？
-   - 严重语病：是否存在导致句意不清的中式英语（Chinglish）或语法结构错误。
+   - 严重语病：是否存在导致句意不清或语法结构错误。
 
 3. 输出格式：
    - 如果没有上述“必须修改”的错误，请直接输出中文：[检测通过，无实质性问题]。
@@ -382,36 +346,34 @@
 你是一位计算机科学领域的资深学术编辑，专注于提升论文的自然度与可读性。你的任务是将大模型生成的机械化文本重写为符合顶级会议（如 ACL, NeurIPS）标准的自然学术表达。
 
 # Task
-请对我提供的【英文 LaTeX 代码片段】进行“去 AI 化”重写，使其语言风格接近人类母语研究者。
+请对我提供的片段进行“去 AI 化”重写，使其语言风格接近人类母语研究者。
 
 # Constraints
 1. 词汇规范化：
-   - 优先使用朴实、精准的学术词汇。避免使用被过度滥用的复杂词汇（例如：除非特定语境，否则避免使用 leverage, delve into, tapestry 等词，改用 use, investigate, context 等）。
+   - 优先使用朴实、精准的学术词汇。避免使用被过度滥用的复杂词汇。
    - 只有在必须表达特定技术含义时才使用术语，避免为了形式上的“高级感”而堆砌辞藻。
 
 2. 结构自然化：
    - 严禁使用列表格式：必须将所有的 item 内容转化为逻辑连贯的普通段落。
-   - 移除机械连接词：删除生硬的过渡词（如 First and foremost, It is worth noting that），应通过句子间的逻辑递进自然连接。
+   - 移除机械连接词：删除生硬的过渡词，应通过句子间的逻辑递进自然连接。
    - 减少插入符号：尽量减少破折号（—）的使用，建议使用逗号、括号或从句结构替代。
 
 3. 排版规范：
    - 禁用强调格式：严禁在正文中使用加粗或斜体进行强调。学术写作应通过句式结构来体现重点。
-   - 保持 LaTeX 纯净：不要引入无关的格式指令。
+   - 保持纯净：不要引入无关的格式指令。
 
 4. 修改阈值（关键）：
    - 宁缺毋滥：如果输入的文本已经非常自然、地道且没有明显的 AI 特征，请保留原文，不要为了修改而修改。
-   - 正向反馈：对于高质量的输入，应在 Part 3 中给予明确的肯定和正向评价。
+   - 正向反馈：对于高质量的输入，应在 Part 2 中给予明确的肯定和正向评价。
 
 5. 输出格式：
-   - Part 1 [LaTeX]：输出重写后的代码（如果原文已足够好，则输出原文）。
-     * 语言要求：必须是全英文。
+   - Part 1 ：输出重写后的文字（如果原文已足够好，则输出原文）。
      * 必须对特殊字符进行转义（例如：`%`、`_`、`&`）。
      * 保持数学公式原样（保留 `$` 符号）。
-   - Part 2 [Translation]：对应的中文直译。
-   - Part 3 [Modification Log]：
+   - Part 2 [Modification Log]：
      * 如果进行了修改：简要说明调整了哪些机械化表达。
      * 如果未修改：请直接输出中文评价：“[检测通过] 原文表达地道自然，无明显 AI 味，建议保留。”
-   - 除以上三部分外，不要输出任何多余的对话。
+   - 除以上2部分外，不要输出任何多余的对话。
 
 # Execution Protocol
 在输出前，请自查：
@@ -420,17 +382,6 @@
 
 # Input
 [在此处粘贴你的英文 LaTeX 代码]
-````
-此处我们给出一些“ai味”较浓的单词，当出现下述单词时可考虑替换（仅供参考）：
-````markdown
-Accentuate, Ador, Amass, Ameliorate, Amplify, Alleviate, Ascertain, Advocate, Articulate, Bear, Bolster,
-Bustling, Cherish, Conceptualize, Conjecture, Consolidate, Convey, Culminate, Decipher, Demonstrate,
-Depict, Devise, Delineate, Delve, Delve Into, Diverge, Disseminate, Elucidate, Endeavor, Engage, Enumerate,
-Envision, Enduring, Exacerbate, Expedite, Foster, Galvanize, Harmonize, Hone, Innovate, Inscription,
-Integrate, Interpolate, Intricate, Lasting, Leverage, Manifest, Mediate, Nurture, Nuance, Nuanced, Obscure,
-Opt, Originates, Perceive, Perpetuate, Permeate, Pivotal, Ponder, Prescribe, Prevailing, Profound, Recapitulate,
-Reconcile, Rectify, Rekindle, Reimagine, Scrutinize, Substantiate, Tailor, Testament, Transcend, Traverse,
-Underscore, Unveil, Vibrant
 ````
 
 ---
@@ -496,7 +447,6 @@ Your task is to generate a professional "Illustration" (main figure for the pape
 **Generation Instruction:**
 Highlight the core novelty. Ensure the connection logic makes sense."""
 ````
-![由上述prompt生成的效果图](images/nana-banana.png)
 
 ---
 
@@ -576,19 +526,16 @@ Highlight the core novelty. Ensure the connection logic makes sense."""
 你是一位经验丰富的学术编辑，擅长撰写精准、规范的论文插图标题。
 
 # Task
-请将我提供的【中文描述】转化为符合顶级会议规范的【英文图标题】。
+请将我提供的【中文描述】转化为符合顶级会议规范的【图标题】。
 
 # Constraints
-1. 格式规范：
-   - 如果翻译结果是名词性短语：请使用 Title Case 格式，即所有实词的首字母大写，末尾不加句号。
-   - 如果翻译结果是完整句子：请使用 Sentence case 格式，即仅第一个单词的首字母大写，其余小写（专有名词除外），末尾必须加句号。
 
-2. 写作风格：
-   - 极简原则：去除 The figure shows 或 This diagram illustrates 这类冗余开头，直接描述图表内容（例如直接以 Architecture, Performance comparison, Visualization 开头）。
+1. 写作风格：
+   - 极简原则：去除冗余开头，直接描述图表内容。
    - 去 AI 味：尽量避免使用复杂的生僻词，保持用词平实准确。
 
-3. 输出格式：
-   - 只输出翻译后的英文标题文本。
+2. 输出格式：
+   - 只输出标题文本。
    - 不要包含 Figure 1: 这样的前缀，只输出内容本身。
    - 必须对特殊字符进行转义（例如：`%`、`_`、`&`）。
    - 保持数学公式原样（保留 `$` 符号）。
@@ -606,19 +553,16 @@ Highlight the core novelty. Ensure the connection logic makes sense."""
 你是一位经验丰富的学术编辑，擅长撰写精准、规范的论文表格标题。
 
 # Task
-请将我提供的【中文描述】转化为符合顶级会议规范的【英文表标题】。
+请将我提供的【中文描述】转化为符合顶级会议规范的【表标题】。
 
 # Constraints
-1. 格式规范：
-   - 如果翻译结果是名词性短语：请使用 Title Case 格式，即所有实词的首字母大写，末尾不加句号。
-   - 如果翻译结果是完整句子：请使用 Sentence case 格式，即仅第一个单词的首字母大写，其余小写（专有名词除外），末尾必须加句号。
 
-2. 写作风格：
+1. 写作风格：
    - 常用句式：对于表格，推荐使用 Comparison with, Ablation study on, Results on 等标准学术表达。
    - 去 AI 味：尽量避免使用 showcase, depict 等词，直接使用 show, compare, present。
 
-3. 输出格式：
-   - 只输出翻译后的英文标题文本。
+2. 输出格式：
+   - 只输出翻译后的中文标题文本。
    - 不要包含 Table 1: 这样的前缀，只输出内容本身。
    - 必须对特殊字符进行转义（例如：`%`、`_`、`&`）。
    - 保持数学公式原样（保留 `$` 符号）。
@@ -709,107 +653,3 @@ Highlight the core novelty. Ensure the connection logic makes sense."""
 
 # Input
 请根据我上传的pdf附件进行分析，我计划投稿于 [在此处输入你的投稿目标，例如：ICML 2026]
-
-````
-
----
-
-## 模型选择
-我们从公开网站 [arena.ai](https://arena.ai/zh/leaderboard/text/creative-writing) 上获取了Creative Writing能力排名前10的模型与具体版本，该榜单结果与调研群体的日常使用选择高度契合。在科研场景中，日常的 idea 交互与论文写作，主力模型仍为 Gemini-3-pro/flash；在实验代码编写场景下，更多使用 Claude-4.5 系列模型，以及 Cursor 内置的 Composer 模型。此外，从实际体验来看，GPT 5.1 与 GPT 5.2 的表现较为一般，目前对gpt系列模型的使用频率已大幅下降。
-
-![模型排名](images/model-rank.png)
-
----
-
-# Part II: 论文写作相关的 Agent-Skills
-
-> 🎯 **适用对象**：本部分内容主要面向经常使用 Cursor、Claude Code 等 AI coding 工具的用户
->
-> 💡 **使用说明**：Agent Skills 是一种可被 AI 助手（如 Claude、Cursor）加载的扩展能力包，内含针对特定任务的流程、规范与模板。在 Claude Code、Cursor 等环境中配置相应 Skill 后，在对话中直接描述需求（如目标会议、repo 路径、要写的章节），即可触发对应流程，无需记忆复杂 prompt
-
-## Skills 的配置
-
-下文的演示基于 **OpenSkills** 生态：它提供一套**通用的 Skills 加载/管理方式**，让 Cursor 等 AI coding agent 可以读取并使用以 `SKILL.md` 为核心的技能包。参考链接： [Cursor Agent Skills](https://cursor.com/docs/context/skills)、[openskills](https://github.com/numman-ali/openskills)
-
-### 1) 前置依赖
-
-OpenSkills 通过 npm 分发，并会从 GitHub 拉取 skills 仓库，因此建议准备：
-- Node.js 20.6+（含 npm）
-- Git
-
-### 2) 安装/运行 OpenSkills
-
-OpenSkills 支持直接用 `npx` 运行：
-
-```bash
-npx openskills --version
-```
-
-如需多项目复用，也可全局安装：
-
-```bash
-npm i -g openskills
-openskills --version
-```
-
-### 3) 一键安装 Skills
-
-OpenSkills 支持直接从 GitHub 仓库安装 Skills，并自动放入默认目录（一般为项目内 `./.claude/skills/`），Cursor 会自动从 `.claude/skills/`（以及 `.cursor/skills/`）发现 skills 并加载
-
-下面以两个上游仓库为例展示 Skills 的安装方式：
-
-```bash
-# research 相关：zechenzhangAGI/AI-research-SKILLs
-npx openskills install zechenzhangAGI/AI-research-SKILLs
-
-# Anthropic 官方 skills
-npx openskills install anthropics/skills
-```
-
-执行后 OpenSkills 会弹出交互式选择（勾选需要的 Skill 即可，默认全部安装）
-
-### 4) 在 Cursor 中查看与使用 Skills
-
-Skills 安装到 `.claude/skills/` 后，Cursor 启动时会自动发现并提供给 Agent 使用。建议按以下方式验证：
-
-- **确认 skills 已安装**：`npx openskills list` 能看到目标 skills
-- **在 Cursor Settings 中查看**：打开 Cursor Settings，进入 **Rules, Skills, Subagents**，在 **Skills** 区域可看到已发现的 skills
-- **在对话中手动调用**：在 Agent Chat 输入 `/`，搜索 skill 名称并手动插入
-- **在对话中自然触发**：直接提出明显对应 skill 的需求（例如“用会议模板开新稿”“写一个 booktabs 表格”），若行为与 Skill 文档一致，则配置生效
- 
-配置完成后，无需记忆复杂 prompt，在对话中直接说明「要做什么」和「已有信息」即可。例如：提供研究 repo 路径与目标会议，说明「用 ICLR 2026 模板新建一篇论文、项目放在当前目录」。
-
-![Skills 配置与触发示意](images/example.png)
-
-## Skills 总览
-
-| Skill 名称 | 来源 | 功能简述 |
-|------------|------|----------|
-| **20-ml-paper-writing** | [zechenzhangAGI/AI-research-SKILLs](https://github.com/zechenzhangAGI/AI-research-SKILLs) | 面向 NeurIPS / ICML / ICLR / ACL / AAAI / COLM 的完整论文写作：从 repo 起稿、LaTeX 模板、引用验证、审稿人视角、会议 checklist、格式迁移；内含 booktabs 表格规范与图规范（矢量图、caption、色盲友好等）。 |
-| **humanizer** | [blader/humanizer](https://github.com/blader/humanizer) | 识别并去除 AI 写作痕迹，使文本更自然、像人写。基于 Wikipedia「Signs of AI writing」：过度强调意义、促销腔、空洞 -ing 分析、模糊归因、破折号滥用、三点式堆砌、AI 高频词、否定式平行等；同时注入「人味」：有观点、节奏变化、承认不确定性、适当用「我」。适合润色后终稿或投稿前语言风格检查。 |
-| **docx** | [anthropics/skills](https://github.com/anthropics/skills) | 对 .docx 进行创建、编辑、分析。支持：用 pandoc 转 Markdown 读正文；用 Document 库/OOXML 编辑已有文档；Redlining 流程做带修订痕迹的审稿式修改。**论文场景**：给定期刊/会议的 Word 投稿模板，在模板中替换标题、作者、摘要、正文等占位内容，生成符合格式的投稿稿；也可对他人文档做修订建议（tracked changes）。 |
-| **doc-coauthoring** | [anthropics/skills](https://github.com/anthropics/skills) | 分阶段文档协作：收集上下文与澄清问题 → 按节头脑风暴→起草→精修 → 读者测试查盲点。适用于论文单节或整篇的结构化迭代。 |
-| **canvas-design** | [anthropics/skills](https://github.com/anthropics/skills) | 先产出 design philosophy (.md)，再在画布上实现为单页 .png / .pdf，适合论文中的概念图、示意图、框架图。 |
-
-## 使用场景与示例 Prompt
-
-| 使用场景 | 推荐 Skill | 前置输入 | 示例 Prompt | 产出 |
-|----------|------------|----------|-------------|----------|
-| 从零写一篇论文 | 20-ml-paper-writing | 研究 repo 路径或关键文件（README、results、笔记）+ 目标会议 | 「用这个 repo 帮我写一篇投 NeurIPS 的论文」「根据 results/ 里的实验，起草一篇 ICML 的稿子」 | 一句式贡献确认后，按 Abstract→Introduction→Methods→Experiments→Related Work→Limitations 的完整初稿 |
-| 用会议模板开新稿 | 20-ml-paper-writing | 目标会议 + 论文目录存放路径 | 「帮我用 ICLR 2026 模板新建一篇论文」「用 NeurIPS 2025 模板，项目放在当前目录」 | 拷贝完整模板目录并写好标题、作者占位、章节骨架 |
-| 加引用 / 写 Related Work | 20-ml-paper-writing | 要引用的主题或关键词（如「RLHF 对齐」），或希望被引用的表述 | 「帮我找并引用 2023 年后 RLHF 的几篇代表作」「Related Work 里需要 cite Vaswani 的 attention，帮我查准并给 BibTeX」 | 经检索/API 核实的 BibTeX；无法核实的标为 [CITATION NEEDED] 或 placeholder，需用户自行核对 |
-| 换会议 / 改投别家 | 20-ml-paper-writing | 当前稿子会议格式、目标会议、.tex 或项目路径 | 「这篇稿子要从 NeurIPS 改成 ICML，帮我做格式迁移」「把 main.tex 迁到 ICLR 2026 模板里，页数限制 9 页」 | 新会议模板下的稿子（仅迁移正文与图表）+ 页数、Broader Impact / Limitations 等提醒 |
-| 投稿前清单核对 | 20-ml-paper-writing | 无 | 「帮我对一下 NeurIPS 的 paper checklist」「交稿前帮我看一遍 ICML 的要求」 | 按该会议要求的逐项核对（匿名、页数、图表、引用、伦理等），并标出缺失或需修改项 |
-| 写 / 改 LaTeX 表格 | 20-ml-paper-writing | 方法名、指标名、数值（或简单列表/CSV） | 「帮我把下面结果做成论文里的表格：Method A 准确率 85.2，Method B 92.1…」「用 booktabs 风格，加 ↑↓ 标注指标方向」 | 可直接粘贴进 .tex 的 `\begin{table}...\end{table}` 代码（含 \toprule/\midrule/\bottomrule、最佳值加粗、数值右对齐等） |
-| 图与 caption 规范 | 20-ml-paper-writing | 图或图的描述 | 「帮我写 Figure 1 的 caption，要求包含 xxx」「这张图要符合顶会要求，检查图内标题、色盲友好」 | 符合规范的 caption 文案 + 矢量图/线型等修改建议 |
-| 结构化流程写某一节 | doc-coauthoring | 无（进入流程后按提示提供上下文） | 「用 doc coauthoring 流程，我们先写 Introduction」「我想用协作流程写这篇论文的 Methods」 | 三阶段说明（收集上下文→分节起草→读者测试），同意后进入 Stage 1 |
-| Stage 1：提供上下文 | doc-coauthoring | 文档类型、读者、目标效果、模板等；repo、主要结论、不确定点、笔记、目标会议（可零散提供） | 「投 ICLR，读者是审稿人」「主要贡献是 X，但 Related Work 还没想好怎么划界」「实验在 results/，README 里有总结」 | 5～10 个澄清问题（如贡献侧重、必放结果），回答后进入 Stage 2 |
-| Stage 2：按节起草与修改 | doc-coauthoring | 选定一节；对要点勾选保留/合并/删，对正文用简短指令改 | 「保留 1、4、7，删 3」「这段太长了，压缩成三句」「加一句和 Figure 1 的对应」 | 该节更新版，循环至满意后换下一节 |
-| Stage 3：读者测试 | doc-coauthoring | 稿子基本定稿 | 「做一下读者测试」「用新会话试几个读者问题」 | 读者视角下的不清/易误解处 + 修改建议；可按需改稿 |
-| 论文概念图 / 示意图 / 框架图 | canvas-design | 图的用途与大致元素（如三阶段 pipeline、方法对比） | 「帮我画一个我们方法的整体框架图，三块：数据、训练、推理」「做一张方法对比的示意图，左边传统方法，右边我们的」 | design philosophy (.md) + 可下载的 .pdf 或 .png，可插入 LaTeX 并配合 20-ml-paper-writing 写 caption |
-| 改图的风格或细节 | canvas-design | 对已有图的修改意见 | 「背景改成浅灰」「左边块加大一点」「不要那么多字，只保留标签」 | 按意见调整后的新版图说明，再导出 .pdf/.png 供替换进论文 |
-| 去 AI 味 / 润色后终稿检查 | humanizer | 待检查的段落或全文（LaTeX 片段、Word 正文、Markdown 等） | 「这段读起来像 AI 写的，帮我 humanize」「投稿前帮我把 Abstract 和 Introduction 去一下 AI 味」 | 重写后的自然文本 + 可选修改说明；保留原意与语气，减少显著性堆砌、破折号滥用、三点式、AI 高频词等 |
-| 用 Word 模板写投稿稿 | docx | 期刊/会议提供的 .docx 投稿模板；你的标题、作者、摘要、各节正文 | 「这是某期刊的 Word 模板，帮我把我的标题、摘要和正文填进去」「在模板里替换作者信息和 Section 1–4 的内容」 | 符合模板格式的 .docx 稿（可先解包再脚本替换占位内容，或按 OOXML 编辑后重新打包） |
-| 对 Word 稿做修订建议 | docx | 已写好的 .docx 论文或审稿意见 | 「按 redlining 流程，帮我在文档里标出需要改的几处」「把这段改成 tracked changes：原文删除、新文插入」 | 带修订痕迹的 .docx（仅标记改动处，便于作者接受/拒绝） |
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Leey21/awesome-ai-research-writing&type=Date)](https://star-history.com/#Leey21/awesome-ai-research-writing&Date)
